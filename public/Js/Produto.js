@@ -1,8 +1,8 @@
 const imgContainer = document.querySelector(".showcase > div");
-const img = document.querySelector(".showcase");
+const img = document.querySelector(".showcase img");
 const shadow = document.querySelector(".shadow");
 
-const thumb = document.querySelectorAll(".thumbs");
+const thumb = document.querySelectorAll(".thumbs img");
 const titleOverlay = document.querySelector(".titleOverlay");
 const title = document.querySelector(".titleText");
 const desc = document.querySelector(".description");
@@ -77,9 +77,9 @@ const descriptions =[
 const ratings = [4, 5, 3];
 
 function getImage (imgType, shoe, colorType, id, extension){
-return "img" +
+return "img/" +
 imgType + "/shoe" + shoe + "-" +
-colorType + "img/" + id + "." + extension;
+colorType + "/img" + id + "." + extension;
 
 }
 

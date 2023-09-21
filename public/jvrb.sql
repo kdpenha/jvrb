@@ -3,15 +3,19 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/08/2023 às 00:32
+-- Tempo de geração: 20/09/2023 às 16:28
 -- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Banco de dados: `jvrb`
@@ -25,11 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cliente` (
   `ID_cliente` int(2) NOT NULL,
-  `nome` int(70) NOT NULL,
-  `endereço` varchar(70) NOT NULL,
+  `nome` varchar(70) NOT NULL,
+  `endereço` varchar(70) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
-  `telefone` int(11) NOT NULL
+  `telefone` int(11) DEFAULT NULL,
+  `senha` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`ID_cliente`, `nome`, `endereço`, `email`, `telefone`, `senha`) VALUES
+(5, 'kay', NULL, 'kayke@teste.com', NULL, '81dc9bdb52d04dc20036dbd8313ed055'),
+(6, 'Vitor', NULL, 'vitor@teste.com', NULL, '81dc9bdb52d04dc20036dbd8313ed055');
 
 -- --------------------------------------------------------
 
@@ -110,28 +123,6 @@ CREATE TABLE `pedido` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pessoa_fisica`
---
-
-CREATE TABLE `pessoa_fisica` (
-  `CPF` int(11) NOT NULL,
-  `data_nasc` char(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pessoa_juridica`
---
-
-CREATE TABLE `pessoa_juridica` (
-  `CNPJ` int(14) NOT NULL,
-  `nome_empresa` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `produto`
 --
 
@@ -191,15 +182,22 @@ ALTER TABLE `pedido`
   ADD UNIQUE KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices de tabela `pessoa_fisica`
---
-ALTER TABLE `pessoa_fisica`
-  ADD PRIMARY KEY (`CPF`);
-
---
 -- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
   ADD PRIMARY KEY (`id_produto`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `ID_cliente` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
