@@ -181,19 +181,19 @@ header .icons a:hover{
 }
 
 .home .slide-container:nth-child(1) .slide{
-  background:url(public/Imagens/imgHome/home-bg-1.jpg) no-repeat;
+  background:url(../Imagens/imgHome/home-bg-1.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .home .slide-container:nth-child(2) .slide{
-  background:url(Imagens/imgHome/home-bg-2.jpg) no-repeat;
+  background:url(../Imagens/imgHome/home-bg-2.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .home .slide-container:nth-child(3) .slide{
-  background:url(Imagens/imgHome/home-bg-3.jpg) no-repeat;
+  background:url(../Imagens/imgHome/home-bg-3.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
