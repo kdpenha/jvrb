@@ -24,6 +24,10 @@ class AppController extends Action {
         $this->render('index','layout_index');
     }
 
+    public function produto() {
+        $this->render('produto', 'layout_produto');
+    }
+
     public function adicionarCarrinho() {
 
         $this->validaAutenticacao();
@@ -32,7 +36,20 @@ class AppController extends Action {
         $cliente->__set('id_cliente', $_SESSION['id']);
         $cliente->__set('nome', $_SESSION['nome']);
 
+        $this->view->info_usuario = $_SESSION;
 
+    }
+
+    public function listaProdutos() {
+
+        $this->validaAutenticacao();
+        $cliente = Container::getModel('cliente');
+        $cliente->__set('id_cliente', $_SESSION['id']);
+
+        $carrinho = Container::getModel('carrinho');
+        echo '<pre>';
+        print_r($carrinho->getCarrinhoCompras($cliente->__get('id_cliente')));
+        echo '</pre>';
     }
 
     public function validaAutenticacao() { //só deixa ele tomar determinada ação se ele tiver logado
