@@ -14,6 +14,7 @@ class AppController extends Action {
             $cliente->__set('id_cliente', $_SESSION['id']);
             $cliente->__set('nome', $_SESSION['nome']);
             $this->view->logado = true;
+            var_dump($_SESSION);
 
             $this->view->info_usuario = $_SESSION;
         } else {
