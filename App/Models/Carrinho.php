@@ -21,10 +21,12 @@ class Carrinho extends Model {
 
     public function getCarrinhoCompras($id_cliente) {
 
-        $query = 'SELECT produto.id_produto, produto.nome, produto.preço, produto.img_produto, cc.id, cc.id_cliente, cc.id_produto FROM carrinho as cc LEFT JOIN produto ON cc.id_produto = produto.id_produto';
-        $stmt = $this->db->query($query);
+        $query = 'SELECT produto.id_produto, produto.nome, produto.preço, produto.img_produto, cc.id, cc.id_cliente, cc.id_produto FROM carrinho as cc LEFT JOIN produto ON cc.id_produto = produto.id_produto WHERE cc.id_cliente = ?';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(1, $id_cliente);
+        $stmt->execute();
         $lista_produtos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        
+
         return json_encode($lista_produtos);
     }
 
