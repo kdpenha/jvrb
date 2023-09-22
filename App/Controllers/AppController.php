@@ -13,12 +13,15 @@ class AppController extends Action {
             $cliente = Container::getModel('cliente');
             $cliente->__set('id_cliente', $_SESSION['id']);
             $cliente->__set('nome', $_SESSION['nome']);
-            echo '<br><br><br><br><br><br><br><br>';
-            print_r($_SESSION);
-            echo'TA LOGADO';
-        }
-        $this->render('index','layout_index');
+            $this->view->logado = true;
 
+            $this->view->info_usuario = $_SESSION;
+        } else {
+
+            $this->view->logado = false;
+        }
+
+        $this->render('index','layout_index');
     }
 
     public function adicionarCarrinho() {
