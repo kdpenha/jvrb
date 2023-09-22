@@ -28,4 +28,12 @@
                 header('location: /login?login=erro');
             }
         }
+
+        public function sair() {
+            session_start();
+
+            session_destroy();
+
+            header('location:/');
+        }
     }

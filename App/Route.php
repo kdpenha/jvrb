@@ -37,6 +37,11 @@ class Route extends Bootstrap{
             'controller' => 'AuthController',
             'action' => 'autenticar' // qual açao que sera disparada quando a rota for requisitada
         );
+        $routes['sair'] = array( //caso a rota/PATH seja raiz(/ ou index)
+            'route' => '/sair',
+            'controller' => 'AuthController',
+            'action' => 'sair' // qual açao que sera disparada quando a rota for requisitada
+        );
 
         $this->setRoutes($routes);
     }

@@ -84,6 +84,19 @@ header .navbar a:hover{
   color:var(--orange);
 }
 
+header .icons {
+
+  display: flex;
+  align-items: end;
+}
+
+header .icons p {
+
+  font-size: 1.3em;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
 header .icons a{
   font-size: 2.5rem;
   color:var(--black);
