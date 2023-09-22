@@ -82,7 +82,7 @@ class Cliente extends Model {
         return $this;
     }
 
-    public function adicionarCarrinho() {
+    public function adicionarCarrinho($id_produto) {
 
         
     }

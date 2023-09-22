@@ -15,10 +15,6 @@
             $this->render('contato', 'layout_contato');
         }
 
-        public function produto() {
-            $this->render('produto', 'layout_produto');
-        }
-
         public function cadastrar() {
 
             $cliente = Container::getModel('cliente');
