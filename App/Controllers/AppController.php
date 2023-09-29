@@ -36,8 +36,24 @@ class AppController extends Action {
         $cliente->__set('id_cliente', $_SESSION['id']);
         $cliente->__set('nome', $_SESSION['nome']);
 
-        $this->view->info_usuario = $_SESSION;
+        $id_cliente = $_SESSION['id'];
+        $id_produto = $_POST['id_produto']? $_POST['id_produto'] : '';
 
+        $carrinho = Container::getModel('carrinho');
+
+        try {
+            $carrinho->adicionaProduto($id_produto, $id_cliente);
+            header('location: /carrinho');
+        } catch(\PDOException $e) {
+
+            echo $e->getMessage();
+        }
+
+    }
+
+    public function carrinho() {
+
+        $this->render('carrinho','layout_carrinho');
     }
 
     public function listaProdutos() {
@@ -73,6 +89,7 @@ class AppController extends Action {
         $this->view->nome_tenis = $produto['nome'];
         $this->view->preco_tenis = $produto['preço'];
         $this->view->img_tenis = $produto['img_produto'];
+        $this->view->id_produto = $produto['id_produto'];
 
         $this->render('item','layout_item');
     }

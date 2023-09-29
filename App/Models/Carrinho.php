@@ -29,4 +29,14 @@ class Carrinho extends Model {
         return json_encode($lista_produtos);
     }
 
+    public function adicionaProduto($id_produto, $id_cliente) {
+        $query = 'INSERT INTO carrinho (id_produto, id_cliente) VALUES (?, ?)';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(1, $id_produto);   
+        $stmt->bindValue(2, $id_cliente);   
+        $stmt->execute();
+
+        return $this;
+    }
+
 }

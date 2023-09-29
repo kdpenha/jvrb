@@ -31,10 +31,13 @@
 					</div>
 
 					<div class="container-add-cart">
-					<button class="btn-add-to-cart">
+					<form action="/adicionar_carrinho" method="post">
+					<button type="submit" class="btn-add-to-cart">
 						<i class="fa-solid fa-plus"></i>
+						<input type="hidden" name="id_produto" value="<?=$this->view->id_produto?>">
 						Adicionar ao Carrinho de Compras.
 					</button>
+					</form>	
 					</div>
 
 				<div class="container-description">
