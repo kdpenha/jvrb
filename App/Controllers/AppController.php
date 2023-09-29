@@ -24,8 +24,8 @@ class AppController extends Action {
         $this->render('index','layout_index');
     }
 
-    public function produto() {
-        $this->render('produto', 'layout_produto');
+    public function exposicao() {
+        $this->render('exposicao', 'layout_exposicao');
     }
 
     public function adicionarCarrinho() {
@@ -50,6 +50,31 @@ class AppController extends Action {
         echo '<pre>';
         print_r($carrinho->getCarrinhoCompras($cliente->__get('id_cliente')));
         echo '</pre>';
+    }
+
+    public function mostrarProduto() {
+
+        if($this->taLogado()) {
+            $cliente = Container::getModel('cliente');
+            $cliente->__set('id_cliente', $_SESSION['id']);
+            $cliente->__set('nome', $_SESSION['nome']);
+            $this->view->logado = true;
+
+            $this->view->info_usuario = $_SESSION;
+        } else {
+
+            $this->view->logado = false;
+        }
+
+        $id_produto = $_GET['id_produto'];
+
+        $produto = Container::getModel('produto');
+        $produto = $produto->getProduto($id_produto);
+        $this->view->nome_tenis = $produto['nome'];
+        $this->view->preco_tenis = $produto['preço'];
+        $this->view->img_tenis = $produto['img_produto'];
+
+        $this->render('item','layout_item');
     }
 
     public function validaAutenticacao() { //só deixa ele tomar determinada ação se ele tiver logado

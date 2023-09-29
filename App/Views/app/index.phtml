@@ -1,40 +1,13 @@
-<header>
-
-<div id="menu-bar" class="fas fa-bars"></div>
-<a href="/" class="logo">JVRB</a>
-<nav class="navbar">
- <a href="#home">home</a>
- <?php if($this->view->logado == false) : ?>
- <a href="/login">login</a>
- <?php endif; ?>
- <?php if($this->view->logado == false) : ?>
- <a href="/login">Cadastro</a>
- <?php endif; ?>
- <a href="/contato">Contato</a>
- <?php if($this->view->logado): ?>
- <a href="/sair">Sair</a>
- <?php endif; ?>
-</nav>
-
-<div class="icons">
- <a href="#" class="fas fa-heart"></a>
- <a href="#" class="fas fa-shopping-cart"></a>
- <a href="#" class="fas fa-user"></a>
- <?php if($this->view->logado): ?>
- <p>Olá, <?=$this->view->info_usuario['nome']?>!</p>
- <?php endif; ?>
-</div>
-</header>
-
-
-
+<?php
+    include '../App/Views/nav.phtml'
+  ?>
 <section class="home" id="home">
 <div class="slide-container active">
  <div class="slide">
   <div class="content">
    <span>Nike Free Metcon Vermelho</span>
    <p>Sapato Nike da linha Free Metcon, feito para corrida ou treino</p>
-   <a href="#" class="btn">SEJA BEM VINDO</a>
+   <a href="/exposicao" class="btn">SEJA BEM VINDO</a>
   </div>
   <div class="image">
    <img src="Imagens/imgHome/home-shoe-1.png" class="shoe" alt="">
@@ -47,7 +20,7 @@
   <div class="content">
    <span>Nike Free Metcon Azul</span>
    <p>Sapato Nike da linha Free Metcon, feito para corrida ou treino.</p>
-   <a href="#" class="btn">SEJA BEM VINDO</a>
+   <a href="/exposicao" class="btn">SEJA BEM VINDO</a>
   </div>
   <div class="image">
    <img src="Imagens/imgHome/home-shoe-2.png" class="shoe" alt="">
@@ -60,7 +33,7 @@
   <div class="content">
    <span>Nike Free Metcon Amarelo</span>
    <p>Sapato Nike da linha Free Metcon, feito para corrida ou treino.</p>
-   <a href="#" class="btn">SEJA BEM VINDO</a>
+   <a href="/exposicao" class="btn">SEJA BEM VINDO</a>
   </div>
   <div class="image">
    <img src="Imagens/imgHome/home-shoe-3.png" class="shoe" alt="">
@@ -124,7 +97,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="1">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
  <div class="box">
@@ -144,7 +120,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver Produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="2">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
  <div class="box">
@@ -164,7 +143,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver Produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="3">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
  <div class="box">
@@ -184,7 +166,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver Produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="4">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
  <div class="box">
@@ -204,7 +189,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver Produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="5">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
  <div class="box">
@@ -224,7 +212,10 @@
     <i class="fas fa-star"></i>
     <i class="far fa-star"></i>
    </div>
-   <a href="/produto" class="btn">Ver Produto</a>
+   <form action="/produto/show" method="get">
+      <input type="hidden" name="id_produto" value="6">
+      <button type="submit" class="btn">Ver Produto</button>
+   </form>
   </div>
  </div>
 </div>
