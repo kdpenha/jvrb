@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+    --black:#2c2c54;
+    --orange:#ff9f1a;
+  }
+
+*{
+    font-family: 'Nunito', sans-serif;
+    margin: 0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+  }
+  
+  html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top:6rem;
+    scroll-behavior: smooth;
+}
+
+.btn:hover{
+    background:var(--orange);
+    color:#fff;
+  }
+
+header{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 1000;
+    background:#fff;
+    padding:2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  }
+  
+  header .logo{
+    font-size: 2.5rem;
+    color:var(--black);
+  }
+  
+  header .navbar a{
+    font-size: 1.7rem;
+    color:var(--black);
+    margin:0 1rem;
+  }
+  
+  header .navbar a:hover{
+    color:var(--orange);
+  }
+  
+  header .icons {
+  
+    display: flex;
+    align-items: end;
+  }
+  
+  header .icons p {
+  
+    font-size: 1.3em;
+    margin-left: 5px;
+    font-weight: bold;
+  }
+  
+  header .icons a{
+    font-size: 2.5rem;
+    color:var(--black);
+    margin-left:1.5rem;
+  }
+  
+  header .icons a:hover{
+    color:var(--orange);
+  }
+  
+  #menu-bar{
+    font-size: 2.5rem;
+    padding: .5rem 1.5rem;
+    border:.1rem solid var(--black);
+    color:var(--black);
+    border-radius: .3rem;
+    cursor: pointer;
+    display: none;
+  }

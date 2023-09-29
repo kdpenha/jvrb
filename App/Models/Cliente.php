@@ -73,7 +73,6 @@ class Cliente extends Model {
         $stmt->execute();
         $cliente = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-        var_dump($cliente);
         if(!empty($cliente['ID_cliente']) && !empty($cliente['nome'])) {
             $this->__set('id_cliente', $cliente['ID_cliente']);
             $this->__set('nome', $cliente['nome']);

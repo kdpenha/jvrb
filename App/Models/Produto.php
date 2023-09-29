@@ -20,4 +20,15 @@ class Produto extends Model {
         return $this;
     }
 
+    public function getProduto($id_produto) {
+
+        $query = 'SELECT id_produto, nome, preço, img_produto FROM produto WHERE id_produto = ?';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(1, $id_produto);
+        $stmt->execute();
+    
+        $dados = $stmt->fetch(\PDO::FETCH_ASSOC);
+        
+        return $dados;
+    } 
 }

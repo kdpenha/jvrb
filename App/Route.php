@@ -22,10 +22,15 @@ class Route extends Bootstrap{
             'controller' => 'indexController',
             'action' => 'contato' // qual açao que sera disparada quando a rota for requisitada
         );
-        $routes['produto'] = array( //caso a rota/PATH seja raiz(/ ou index)
-            'route' => '/produto',
+        $routes['exposicao'] = array( //caso a rota/PATH seja raiz(/ ou index)
+            'route' => '/exposicao',
             'controller' => 'AppController',
-            'action' => 'produto' // qual açao que sera disparada quando a rota for requisitada
+            'action' => 'exposicao' // qual açao que sera disparada quando a rota for requisitada
+        );
+        $routes['produto_show'] = array( //caso a rota/PATH seja raiz(/ ou index)
+            'route' => '/produto/show',
+            'controller' => 'AppController',
+            'action' => 'mostrarProduto' // qual açao que sera disparada quando a rota for requisitada
         );
         $routes['lista_produtos'] = array( //caso a rota/PATH seja raiz(/ ou index)
             'route' => '/lista_produtos',
