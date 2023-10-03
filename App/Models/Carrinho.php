@@ -26,11 +26,22 @@ class Carrinho extends Model {
         $stmt->execute();
         $lista_produtos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-        return json_encode($lista_produtos);
+        return $lista_produtos;
     }
 
     public function adicionaProduto($id_produto, $id_cliente) {
         $query = 'INSERT INTO carrinho (id_produto, id_cliente) VALUES (?, ?)';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(1, $id_produto);   
+        $stmt->bindValue(2, $id_cliente);   
+        $stmt->execute();
+
+        return $this;
+    }
+
+    public function removerProduto($id_produto, $id_cliente) {
+
+        $query = 'DELETE FROM carrinho WHERE id_produto = ? AND id_cliente = ?';
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(1, $id_produto);   
         $stmt->bindValue(2, $id_cliente);   

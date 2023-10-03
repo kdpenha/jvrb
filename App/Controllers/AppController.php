@@ -53,6 +53,15 @@ class AppController extends Action {
 
     public function carrinho() {
 
+        $this->validaAutenticacao();
+        
+        $cliente = Container::getModel('cliente');
+        $cliente->__set('id_cliente', $_SESSION['id']);
+        $cliente->__set('nome', $_SESSION['nome']);
+        $this->view->logado = true;
+
+        $this->view->info_usuario = $_SESSION;
+
         $this->render('carrinho','layout_carrinho');
     }
 
@@ -63,9 +72,9 @@ class AppController extends Action {
         $cliente->__set('id_cliente', $_SESSION['id']);
 
         $carrinho = Container::getModel('carrinho');
-        echo '<pre>';
-        print_r($carrinho->getCarrinhoCompras($cliente->__get('id_cliente')));
-        echo '</pre>';
+        
+        $lista = $carrinho->getCarrinhoCompras($cliente->__get('id_cliente'));
+        echo json_encode($lista);
     }
 
     public function mostrarProduto() {
@@ -92,6 +101,17 @@ class AppController extends Action {
         $this->view->id_produto = $produto['id_produto'];
 
         $this->render('item','layout_item');
+    }
+
+    public function removerProduto() {
+
+        $this->validaAutenticacao();
+        
+        $id_produto = $_POST['id_produto'];
+        print_r($id_produto);
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->removerProduto($id_produto, $_SESSION['id']);
+        header('location: /carrinho');
     }
 
     public function validaAutenticacao() { //só deixa ele tomar determinada ação se ele tiver logado

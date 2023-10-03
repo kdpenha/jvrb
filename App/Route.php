@@ -37,6 +37,11 @@ class Route extends Bootstrap{
             'controller' => 'AppController',
             'action' => 'adicionarCarrinho' // qual açao que sera disparada quando a rota for requisitada
         );
+        $routes['remover_produto'] = array( //caso a rota/PATH seja raiz(/ ou index)
+            'route' => '/remover_produto',
+            'controller' => 'AppController',
+            'action' => 'removerProduto' // qual açao que sera disparada quando a rota for requisitada
+        );
         $routes['carrinho'] = array( //caso a rota/PATH seja raiz(/ ou index)
             'route' => '/carrinho',
             'controller' => 'AppController',

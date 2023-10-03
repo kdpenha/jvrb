@@ -6,10 +6,78 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<link rel="stylesheet" href="/css/Carrinho.css">
+	<link rel="stylesheet" href="/css/Nav.css">
+
+	<script>
+		$(document).ready(
+			()=> {
+				
+				$.ajax({
+					url:'/lista_produtos',
+					method:'get',
+					dataType:'json',
+					success: dados=> {
+						dados.forEach(n => {
+							let item = 
+							'<div class="product">'
+							 + '<div class="row">'
+							+'<div class="col-md-3">'
+							+'<img class="img-fluid mx-auto d-block image" src="'+n.img_produto+'">' 
+							+'</div>' +'<div class="col-md-8">' 
+							+    '<div class="info">' 
+							+    '<div class="row">' 
+							+    '<div class="col-md-5 product-name">' 
+							+    '<div class="product-name">' 
+							+    '<a href="#">Tênis</a>' 
+							+    '<div class="product-info">' 
+							+    '<div>'+n.nome+'<span class="value"></span></div>' 
+							+    '<div> <span class="value"></span></div>' 
+							+    '<div> <span class="value"></span></div>' 
+							+    '</div>' 
+							+    '</div>' 
+							+    '</div>' 
+							+    '<div class="col-md-4 quantity">' 
+							+    '<label for="quantity">Quantidade:</label>' 
+							+    '<input id="quantity" type="number" value ="1" class="form-control quantity-input" onkeydown="return false">' 
+							+    '</div>' 
+							+    '<div class="col-md-3 price">' 
+							+    '<span>$'+n.preço+'</span>' 
+							+ 	 '<form id="remove" class="form-remove" action="/remover_produto" method="post">'
+							+    '<input type="hidden" name="id_produto" value="'+n.id_produto+'"/>'
+							+	 '<button type="submit" id="bottao"class="btn btn-danger btn-block demonio">'
+							+    'Remover</button>'
+							+    '</form>'
+							+    '</div>' 
+							+    '</div>' 
+							+    '</div>' 
+							+    '</div>' 
+							+    '</div>' 
+							+    '</div>'
+							
+							$('.items').append(item)
+						});
+					},
+					error: erro=> console.log(erro)
+				})
+
+				$('.form-remove').submit(
+					e=> {
+						this.preventDefault()
+						console.log('aoba')
+					}
+				)
+
+				
+			}
+		)
+	</script>
 </head>
 
 <body>
+	<?php include '../App/Views/nav.phtml'; ?>
     <?= $this->content() ?>
 </body>
 </html>
