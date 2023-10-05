@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Shopping Cart</title>
+	<title>JVRB - Carrinho de compras</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"">
@@ -21,6 +21,7 @@
 					dataType:'json',
 					success: dados=> {
 						dados.forEach(n => {
+
 							let item = 
 							'<div class="product">'
 							 + '<div class="row">'
@@ -40,8 +41,7 @@
 							+    '</div>' 
 							+    '</div>' 
 							+    '<div class="col-md-4 quantity">' 
-							+    '<label for="quantity">Quantidade:</label>' 
-							+    '<input id="quantity" type="number" value ="1" class="form-control quantity-input" onkeydown="return false">' 
+							+    '<input id="quantity" type="hidden" class="form-control quantity-input" onkeydown="return false">' 
 							+    '</div>' 
 							+    '<div class="col-md-3 price">' 
 							+    '<span>$'+n.preço+'</span>' 
@@ -58,18 +58,31 @@
 							+    '</div>'
 							
 							$('.items').append(item)
+
+							
 						});
+
+						let len = dados.length;
+
+						let preco_total = 0;		
+						let total = 0.0;
+
+						for(let i = 0; i < len; i++) {
+							/*let preco = parseFloat(dados.preço);
+							let total;
+							total =+parseFloat(preco);
+							console.log(total);
+							*/
+							preco_atual = parseFloat(dados[i].preço);
+							preco_total += total + preco_atual;
+							console.log(preco_total);
+						}
+
+						$('.preco_total').append('R$'+preco_total);
+						
 					},
 					error: erro=> console.log(erro)
 				})
-
-				$('.form-remove').submit(
-					e=> {
-						this.preventDefault()
-						console.log('aoba')
-					}
-				)
-
 				
 			}
 		)
