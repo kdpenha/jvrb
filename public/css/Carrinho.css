@@ -74,7 +74,7 @@ main {
 }
 
 .shopping-cart .items .product .info .price{
-	margin-top: 15px;
+	margin-top: 0px;
     font-weight: bold;
     font-size: 22px;
  }
@@ -118,7 +118,7 @@ main {
 
 @media (min-width: 768px) {
 	.shopping-cart .items .product .info {
-		padding-top: 25px;
+		padding-top: 5px;
 		text-align: left; 
 	}
 

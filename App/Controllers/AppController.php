@@ -108,10 +108,22 @@ class AppController extends Action {
         $this->validaAutenticacao();
         
         $id_produto = $_POST['id_produto'];
-        print_r($id_produto);
         $carrinho = Container::getModel('carrinho');
         $carrinho->removerProduto($id_produto, $_SESSION['id']);
         header('location: /carrinho');
+    }
+
+    public function pagarme() {
+        $this->validaAutenticacao();
+        $carrinho = Container::getModel('carrinho');
+        $id_cliente = $_SESSION['id'];
+        $carrinho->zeraCarrinho($id_cliente);
+        $this->render('Pagamento','layout_pagamento');
+    }
+
+    public function pagamentoConcluido() {
+        $this->validaAutenticacao();
+        $this->render('Obrigado','layout_compra_realizada');
     }
 
     public function validaAutenticacao() { //só deixa ele tomar determinada ação se ele tiver logado
