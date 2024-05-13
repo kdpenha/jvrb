@@ -12,5 +12,3 @@ O projeto utiliza PHP, jQuery, arquitetura MVC, Ajax e MySQL como SGBD.
 *Uso da aplicação* <br>
 ---
 Você pode acessar o site pelo seguinte link (http://jvrb.wuaze.com/?i=1)
-
-| :---: |
